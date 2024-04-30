@@ -67,3 +67,16 @@ fun <T> AsyncImage(
         )
     }
 }
+
+/* Carga de imágenes con java.io */
+fun loadImageBitmap(file:File): ImageBitmap =
+    file.inputStream().buffered().use(::loadImageBitmap)
+
+fun loadSvgPainter(file:File, density: Density): Painter =
+    file.inputStream().buffered().use { loadSvgPainter(it, density) }
+
+fun loadXmlImageVector(file: File, density: Density): ImageVector =
+    file.inputStream().buffered().use { loadXmlImageVector(InputSource(it), density) }
+
+
+
